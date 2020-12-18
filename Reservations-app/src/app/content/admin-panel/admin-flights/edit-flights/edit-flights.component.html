@@ -1,0 +1,137 @@
+<div class="wrapper">
+  <div class="form-group overflow-hidden">
+    <input
+      type="text"
+      autocomplete="off"
+      id="startDate"
+      class="form-control search-field departTime short-input short-margin fleft"
+      placeholder="Start date"
+    />
+
+    <input
+      type="text"
+      autocomplete="off"
+      id="startTime"
+      class="form-control search-field departTime short-input short-margin fleft"
+      placeholder="Start time"
+    />
+
+    <input
+      type="text"
+      autocomplete="off"
+      id="arrivingDate"
+      class="form-control search-field returnTime short-input short-margin fleft"
+      placeholder="Arriving date"
+    />
+
+    <input
+      type="text"
+      autocomplete="off"
+      id="arrivingTime"
+      class="form-control search-field returnTime short-input fleft"
+      placeholder="Arriving time"
+    />
+  </div>
+
+  <div class="form-group overflow-hidden">
+    <input
+      id="estimationTime"
+      type="text"
+      class="form-control short-input short-margin fleft"
+      placeholder="Flight esimation time"
+      value=""
+    />
+
+    <input
+      id="distance"
+      type="text"
+      class="form-control short-input short-margin fleft"
+      placeholder="Distance"
+      value=""
+    />
+
+    <select id="discount" class="form-control short-input short-margin fleft">
+      <option value="0">Select discount</option>
+      <option
+        *ngFor="let discount of allDiscounts"
+        value="{{ discount.value }}"
+      >
+        {{ discount.value }}%
+      </option>
+    </select>
+
+    <select
+      (change)="planeTypeSelected()"
+      id="planeType"
+      class="form-control short-input fleft"
+    >
+      <option value="*">Select plane type</option>
+      <option
+        *ngFor="let planeType of allPlaneTypes"
+        value="{{ planeType.id }}"
+      >
+        {{ planeType.name }}
+      </option>
+    </select>
+  </div>
+
+  <div id="seatConfigPreview" class="form-group overflow-hidden">
+    <h6>Check seats for quick reservations:</h6>
+    <!-- ZASTO NECE DA SE SKOTRLJAAA :( -->
+    <app-display-seats [currentSeatConfig]="currentSeatConfiguration">
+    </app-display-seats>
+  </div>
+
+  <div class="form-group overflow-hidden">
+    <h6>Check flight destinations:</h6>
+    <div *ngFor="let destination of allDestinations" class="fleft checkbox">
+      <span
+        ><input
+          type="checkbox"
+          (click)="destinationClick(destination)"
+          name="stops"
+          value="{{ destination.id }}"
+      /></span>
+      <span>{{
+        destination.airportName +
+          ", " +
+          destination.address +
+          ", " +
+          destination.city +
+          ", " +
+          destination.country
+      }}</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <h6>Check additional services:</h6>
+    <div
+      *ngFor="let service of allServices"
+      class="fleft checkbox checkbox-services"
+    >
+      <span
+        ><input type="checkbox" name="services" value="{{ service.id }}"
+      /></span>
+      <span
+        ><img src="{{ serverAddress }}/Resources/Site/{{ service.icon }}" />{{
+          service.name
+        }}</span
+      >
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input
+      id="price"
+      type="text"
+      class="form-control"
+      placeholder="Flight price"
+      value=""
+    />
+  </div>
+
+  <button (click)="createFlight()" class="btn btn-success fright">
+    Create Flight
+  </button>
+</div>

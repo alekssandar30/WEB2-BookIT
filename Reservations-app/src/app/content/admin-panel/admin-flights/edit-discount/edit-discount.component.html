@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="add-item overflow-hidden">
+    <div class="form-group">
+      <input
+        id="discount"
+        type="text"
+        class="form-control"
+        placeholder="Enter discount percents"
+        value=""
+      />
+    </div>
+
+    <button (click)="addDiscount()" class="btn btn-success fright">
+      Add discount
+    </button>
+  </div>
+  <div class="overflow-hidden">
+    <div *ngFor="let discount of allDiscounts" class="item">
+      <span class="fleft">{{ discount.value }}%</span>
+      <div class="overflow-hidden">
+        <img
+          (click)="removeDiscount(discount.id)"
+          class="fright"
+          src="../../../../../assets/site/icons/cancel.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="modal-dialog text-center">
+  <div class="main-section">
+    <div class="modal-content">
+      <div class="col-12 user-img">
+        <img src="../../assets/face.png" alt="profile" />
+      </div>
+
+      <div class="col-12 form-input">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <div class="username-icon"></div>
+            <input
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              class="form-control"
+              placeholder="First name"
+            />
+          </div>
+          <div class="form-group">
+            <div class="username-icon"></div>
+            <input
+              id="secondName"
+              type="text"
+              formControlName="secondName"
+              class="form-control"
+              placeholder="Last name"
+            />
+          </div>
+
+          <div class="form-group">
+            <div class="mail-icon"></div>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="form-control"
+              placeholder="Email"
+            />
+          </div>
+
+          <div class="form-row">
+            <!--show in single line-->
+            <div class="form-group col-md-6">
+              <div class="location-icon"></div>
+              <input
+                id="street"
+                type="text"
+                formControlName="street"
+                class="form-control"
+                placeholder="Street"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <div class="location-icon"></div>
+              <input
+                id="city"
+                type="text"
+                formControlName="city"
+                class="form-control"
+                placeholder="City"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="phone-icon"></div>
+            <input
+              id="phone"
+              type="text"
+              formControlName="phone"
+              class="form-control"
+              placeholder="Phone"
+            />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="password-icon"></div>
+              <input
+                id="password1"
+                type="password"
+                formControlName="password1"
+                class="form-control"
+                id="pass1"
+                placeholder="Password"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <div class="password-icon"></div>
+              <input
+                id="password2"
+                type="password"
+                formControlName="password2"
+                class="form-control pass2"
+                placeholder="Confirm password"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="!registerForm.valid"
+            class="btn btn-success"
+          >
+            Register
+          </button>
+        </form>
+      </div>
+
+      <div class="col-12 forgot">
+        <a href="#">Already have an account?</a>
+      </div>
+    </div>
+  </div>
+</div>

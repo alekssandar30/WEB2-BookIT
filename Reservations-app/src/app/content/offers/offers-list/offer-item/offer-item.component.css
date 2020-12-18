@@ -1,0 +1,37 @@
+.card-body {
+  display: grid;
+  width: 100%;
+  font-family: "Roboto";
+}
+
+.inner {
+  overflow: hidden;
+}
+
+.inner img {
+  transition: all 1.5s ease;
+}
+
+.inner:hover img {
+  transform: scale(1.5);
+}
+
+ul li a {
+  font-family: "Roboto";
+}
+
+.list-group-item-success {
+  color: #fff;
+  font-family: "Roboto";
+  background-color: rgba(67, 48, 154, 0.7);
+}
+
+.list-group-item:hover {
+  font-weight: bold;
+  cursor: auto;
+}
+
+.btn {
+  text-align: center;
+  height: 2.7vw;
+}

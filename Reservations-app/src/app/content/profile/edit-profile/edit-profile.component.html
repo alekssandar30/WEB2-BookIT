@@ -1,0 +1,112 @@
+<div class="overflow-hidden">
+  <form action="">
+    <div>
+      <div class="form-group">
+        <div class="username-icon"></div>
+        <input
+          id="name"
+          type="text"
+          class="form-control"
+          placeholder="First name"
+          value="{{ currentUser != null ? currentUser.firstName : '' }}"
+        />
+      </div>
+      <div class="form-group">
+        <div class="username-icon"></div>
+        <input
+          id="surname"
+          type="text"
+          class="form-control"
+          placeholder="Last name"
+          value="{{ currentUser != null ? currentUser.lastName : '' }}"
+        />
+      </div>
+    </div>
+    <div>
+      <div class="form-group">
+        <div class="mail-icon"></div>
+        <input
+          id="mail"
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          value="{{ currentUser != null ? currentUser.email : '' }}"
+          disabled
+        />
+      </div>
+      <div class="form-group">
+        <div class="location-icon"></div>
+        <input
+          id="street"
+          type="text"
+          class="form-control"
+          placeholder="Street"
+          value="{{ currentUser != null ? currentUser.street : '' }}"
+        />
+      </div>
+    </div>
+
+    <div>
+      <div class="form-group">
+        <div class="location-icon"></div>
+        <input
+          id="city"
+          type="text"
+          class="form-control"
+          placeholder="City"
+          value="{{ currentUser != null ? currentUser.city : '' }}"
+        />
+      </div>
+      <div class="form-group">
+        <div class="phone-icon"></div>
+        <input
+          id="phone"
+          type="text"
+          class="form-control"
+          placeholder="Phone number"
+          value="{{ currentUser != null ? currentUser.phoneNumber : '' }}"
+        />
+      </div>
+    </div>
+    <!--  -->
+    <div>
+      <div class="form-group">
+        <div class="passport-icon"></div>
+        <input
+          type="text"
+          class="form-control"
+          id="passport"
+          placeholder="Passport no."
+          value="{{ currentUser?.passportNo }}"
+        />
+      </div>
+    </div>
+
+    <!--  -->
+    <div>
+      <div class="form-group">
+        <div class="password-icon"></div>
+        <input
+          type="password"
+          class="form-control"
+          id="pass1"
+          placeholder="Password"
+        />
+      </div>
+      <div class="form-group">
+        <div class="password-icon"></div>
+        <input
+          id="pass2"
+          type="password"
+          class="form-control pass2"
+          placeholder="Confirm password"
+        />
+      </div>
+      <div>
+        <button (click)="updateUser()" class="btn-success overflow-hidden">
+          Edit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

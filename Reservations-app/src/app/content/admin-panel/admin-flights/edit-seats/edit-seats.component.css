@@ -1,0 +1,109 @@
+.wrapper {
+  overflow: hidden;
+  /* background-color: forestgreen; */
+}
+.wrapper > div {
+  overflow: hidden;
+  margin: 0 auto;
+  /* background-color: rebeccapurple; */
+}
+.wrapper > div:first-of-type {
+  display: flex;
+  justify-content: center;
+}
+.no-select {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
+
+button {
+  margin-bottom: 1vw;
+}
+.alert {
+  margin: 1vw 0;
+  padding: 0.75vw 0.75vw;
+  font-size: 1.2vw;
+  display: none;
+}
+.alert img {
+  width: 1.5vw;
+  height: 1.5vw;
+}
+/*existing configs*/
+
+#existing-configs {
+  width: 74vw;
+}
+#existing-configs h3 {
+  color: #43309a;
+}
+#existing-configs slider {
+  overflow: hidden;
+}
+.row-container {
+  width: 68vw;
+  height: 10vw;
+  overflow: hidden;
+  background-color: red;
+}
+.klizac a > div {
+  width: 17vw;
+  height: 10vw;
+  background-color: #fff;
+  border: 0.15vw solid #43309a;
+  border-radius: 0.5vw;
+}
+
+.slide_show {
+  overflow: hidden;
+}
+.slide_show .nosac {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 68vw;
+  height: 20vw;
+  position: relative;
+  float: left;
+  /*background-color: #dbeff6;*/
+}
+
+/*
+#005A31
+#A8CD1B
+#CBE32D
+#F3FAB6
+*/
+
+.klizac {
+  width: 500vw;
+  height: 20vw;
+  /*background-color: #dbeff6;*/
+  position: absolute;
+  left: 0vw;
+  overflow: hidden;
+}
+.klizac > a {
+  color: #000;
+}
+.klik {
+  float: left;
+  margin-top: 4vw;
+}
+.slider-card h3 {
+  text-align: center;
+  font-size: 1.8vw;
+}
+.slider-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.slider-card li {
+  font-size: 0.95vw;
+  margin-left: 1vw;
+}

@@ -1,0 +1,255 @@
+<!--- Landing Page -->
+<div id="home">
+  <div class="landing">
+    <div class="home-wrap">
+      <div class="home-inner"></div>
+    </div>
+
+    <div class="caption text-center overflow-hidden" *ngIf="isLoaded">
+      <h1>{{ carCompany == null ? "" : carCompany.name }}</h1>
+      <h3>{{ carCompany == null ? "" : carCompany.description }}</h3>
+      <a class="btn btn-outline-light btn-lg">Drive with us</a>
+
+      <div
+        class="scroll-prompt"
+        scroll-prompt=""
+        ng-show="showPrompt"
+        style="opacity: 1;"
+      >
+        <div class="scroll-prompt-arrow-container">
+          <div class="scroll-prompt-arrow">
+            <div></div>
+          </div>
+          <div class="scroll-prompt-arrow">
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--- End of Landing Page Section -->
+
+<!--Services Section-->
+<div id="services" class="offset">
+  <div class="jumbotron">
+    <div class="narrow text-center">
+      <div class="col-12">
+        <h3 class="heading">Services</h3>
+        <div class="heading-underline"></div>
+      </div>
+
+      <div class="row text-center">
+        <!--Usluga #1-->
+        <div class="col-md-4">
+          <div class="usluga">
+            <i
+              class="far fa-lightbulb fa-4x"
+              data-fa-transform="shrink-3 up-5"
+            ></i>
+            <h3>Fast booking</h3>
+          </div>
+        </div>
+
+        <!--Usluga #2-->
+        <div class="col-md-4">
+          <div class="usluga">
+            <i class="fas fa-car fa-4x" data-fa-transform="shrink-3 up-5"></i>
+            <h3>Car Insurance</h3>
+          </div>
+        </div>
+
+        <!--Usluga #3-->
+        <div class="col-md-4">
+          <div class="usluga">
+            <i class="fas fa-cogs fa-4x" data-fa-transform="shrink-3 up-5"></i>
+            <h3>Cheaper Prices</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--End of Services Section-->
+
+<!--About Section -> cars section -->
+<div id="about" class="offset">
+  <div class="fixed-background">
+    <div class="row purple text-center">
+      <div class="col-12">
+        <h3 class="heading">Our Cars</h3>
+      </div>
+
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-hover table-condensed">
+            <thead class="thead-dark">
+              <tr>
+        
+                <th scope="col">Mark</th>
+                <th scope="col">Description</th>
+                <th scope="col">Year</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Seats</th>
+                <th scope="col">Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <!--Ovde ce ipak da se izlistavaju rezervacije ove kompanije-->
+            <tbody *ngIf="isLoaded">
+              <tr *ngFor="let car of availableCars; let i = index">
+                
+                <td>{{ car.mark }}</td>
+                <td>{{ car.description }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.rating }}</td>
+                <td>{{ car.seats }}</td>
+                <td>{{ car.price }}$</td>
+                <td>
+                  <button
+                    class="btn btn-success"
+                    (click)="QuickReservationModal(car)"
+                    data-toggle="modal"
+                    data-target="#quickReservation"
+                  >
+                    Book Me
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="fixed-wrap">
+      <div class="fixed"></div>
+    </div> -->
+  </div>
+</div>
+
+<!--End of About Section-->
+
+<!--Contact Section-->
+<div id="contact" class="offset">
+  <div class="jumbotron">
+    <footer *ngIf="isLoaded">
+      <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
+          <h3 class="heading">Contact Us</h3>
+
+          <p>Address: {{ carCompany.address }}, {{ carCompany.city }}</p>
+          <hr />
+          
+            <!--Google map-->
+            <google-map
+              [zoom]="zoom"
+              [center]="center"
+              width="100%"
+              height="25vw"
+            >
+              <map-marker [position]="center"></map-marker>
+            </google-map>
+          
+          <!--Rating -> ovo ce morati biti forma? -->
+          <br />
+          <h3 class="heading">Please Rate Us</h3>
+
+          <ul
+            class="list-inline rating-list"
+            *ngFor="let star of stars"
+            style="display: inline-block;"
+          >
+            <li
+              (click)="countStar(star)"
+              [ngClass]="{ selected: star <= selectedValue }"
+            >
+              <i class="fa fa-star fa-3x"></i>
+            </li>
+          </ul>
+          <!-- <button type="submit" (click)="rateCompany()">Confirm rating</button> -->
+          <!--end rating-->
+        </div>
+        <hr class="socket" />
+        &copy; Webici 2020
+      </div>
+    </footer>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="quickReservation"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="quickReservation"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="quickReservation">
+          Make a Quick Car Reservation
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <!--Start date, end date-->
+          <form
+            class="form"
+            [formGroup]="quickReservationForm"
+            (ngSubmit)="MakeQuickReservation()"
+          >
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <div class="mail-icon"></div>
+                <input
+                  id="startDate"
+                  type="date"
+                  formControlName="startDate"
+                  class="form-control"
+                  placeholder="Start date"
+                  value=""
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <div class="location-icon"></div>
+                <input
+                  id="endDate"
+                  type="date"
+                  class="form-control"
+                  formControlName="endDate"
+                  placeholder="End date"
+                  value=""
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">
+            Cancel
+          </button>
+          <button
+            type="submit"
+            (click)="MakeQuickReservation()"
+            class="btn btn-info"
+            data-dismiss="modal"
+            [disabled]="!quickReservationForm.valid"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<app-slider [data]="sliderData"></app-slider>
+
+<div class="search overflow-hidden">
+  <select id="startingAirport" class="form-control search-field fleft">
+    <option value="">Starting airport</option>
+    <option
+      *ngFor="let destination of allDestinations"
+      value="{{ destination.airportName }}"
+      >{{ destination.airportName }}
+    </option>
+  </select>
+  <select id="endingAirport" class="form-control search-field fleft">
+    <option value="">Ending airport</option>
+    <option
+      *ngFor="let destination of allDestinations"
+      value="{{ destination.airportName }}"
+      >{{ destination.airportName }}
+    </option>
+  </select>
+
+  <input
+    type="text"
+    autocomplete="off"
+    id="departDate"
+    class="form-control search-field departTime fleft"
+    placeholder="Starting date"
+  />
+  <input
+    type="text"
+    autocomplete="off"
+    id="returnDate"
+    class="form-control search-field returnTime fleft"
+    placeholder="Returning date"
+  />
+  <button (click)="searchFlights()" class="btn btn-success fleft">
+    Search
+  </button>
+
+  <img
+    (click)="openFilter()"
+    class="fright"
+    src="../../../../assets/site/icons/filter-white.png"
+  />
+</div>
+
+<div class="filter overflow-hidden display-none">
+  <select id="company" class="form-control search-field fleft">
+    <option value="">Company</option>
+    <option
+      *ngFor="let company of allAvioCompanies"
+      value="{{ company.name }}"
+      >{{ company.name }}</option
+    >
+  </select>
+  <select id="price" class="form-control search-field fleft">
+    <option value="">Price range</option>
+    <option value="  0-100"> 0-100$</option>
+    <option value="100-200">100-200$</option>
+    <option value="200-300">200-300$</option>
+    <option value="300-500">300-500$</option>
+    <option value="500-1000">300-1000$</option>
+    <option value="1000-20000">1000+$</option>
+  </select>
+
+  <select id="flightDuration" class="form-control search-field fleft">
+    <option value="">Flight duration</option>
+    <option value="00h:00min-01h:00min">00h:00min-01h:00min</option>
+    <option value="01h:00min-01h:30min">01h:00min-01h:30min</option>
+    <option value="01h:30min-03h:00min">01h:30min-03h:00min</option>
+    <option value="03h:00min-05h:00min">03h:00min-05h:00min</option>
+    <option value="05h:00min-10h:00min">05h:00min-10h:00min</option>
+    <option value="10h:00min-15h:00min">10h:00min-15h:00min</option>
+    <option value="15h:00min-23h:59min">15h:00min+</option>
+  </select>
+  <button (click)="filterFlights()" class="btn btn-success fleft">
+    Filter
+  </button>
+
+  <img
+    (click)="closeFilter()"
+    class="fright"
+    src="../../../../assets/site/icons/close-white.png"
+  />
+</div>
+
+<div class="results">
+  <div *ngFor="let flight of allFlightsToShow" class="result overflow-hidden">
+    <div class="fleft">
+      <div>
+        <h6>Flight termin</h6>
+        <span>
+          <img src="../../../../assets/site/icons/calendar.png" alt="" />
+          {{ flight.startDate }}
+        </span>
+
+        <span>
+          <img src="../../../../assets/site/icons/clock.png" alt="" />
+          {{ flight.startTime }}
+        </span>
+      </div>
+      <div>
+        <h6>Return termin</h6>
+        <span>
+          <img src="../../../../assets/site/icons/calendar.png" alt="" />
+          {{ flight.arrivingDate }}
+        </span>
+
+        <span>
+          <img src="../../../../assets/site/icons/clock.png" alt="" />
+          {{ flight.arrivingTime }}
+        </span>
+      </div>
+    </div>
+
+    <div class="fleft separator">
+      <div>
+        <h6>Connecting flights number</h6>
+        <span>
+          <img
+            src="../../../../assets/site/icons/connecting-flights.png"
+            alt=""
+          />
+          {{ flight.destinations.length }}
+        </span>
+      </div>
+      <div>
+        <h6>Flight duration</h6>
+        <span>
+          <img src="../../../../assets/site/icons/flight-duration.png" alt="" />
+          {{ flight.estimationTime }}
+        </span>
+      </div>
+      <div>
+        <h6>Flight prize</h6>
+        <span>
+          <img src="../../../../assets/site/icons/discount.png" alt="" />
+          {{ flight.price }}$
+        </span>
+      </div>
+    </div>
+
+    <div class="fleft">
+      <div>
+        <h6>Aviocompany</h6>
+        <span>
+          <img src="../../../../assets/site/icons/plane.png" alt="" />
+          <a routerLink="/companies/airlines/{{ flight.avioCompany.id }}">
+            {{ flight.avioCompany.name }}
+          </a>
+        </span>
+      </div>
+      <div>
+        <h6>Relation</h6>
+        <span>
+          <img src="../../../../assets/site/icons/connected.png" alt="" />
+          {{ flight.destinations[0].airportName }}
+          -
+          {{ flight.destinations[flight.destinations.length - 1].airportName }}
+        </span>
+      </div>
+      <a routerLink="/flight/{{ flight.id }}"
+        ><button class="btn btn-success fright">
+          Book IT
+        </button>
+      </a>
+    </div>
+  </div>
+</div>

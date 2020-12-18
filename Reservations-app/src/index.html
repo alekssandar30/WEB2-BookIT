@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>BookIT</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./assets/css/bootstrap-datepicker.css" />
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZhO0XUcDOC_A7gaubpG6M9nHQlSqiEoY"></script>
+  </head>
+  <body>
+    <div id="loading" class="display-none"></div>
+    <!-- <div id="loading">
+      <img src="./assets/site/icons/loading.gif" />
+    </div> -->
+    <app-navigation></app-navigation>
+    <app-root></app-root>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- <script
+      type="text/javascript"
+      src="assets/js/bootstrap-datepicker.js"
+    ></script> -->
+    <!-- <script> -->
+
+    <script>
+      $(document).ready(function () {
+        var loading = {
+          start: function () {
+            //disable wheel
+            let h = $("body").css("height");
+            $("body").css({ height: 100 + "vh" });
+            //
+            $("#loading").removeClass("display-none");
+            setTimeout(function () {
+              loading.finish(h);
+            }, 500);
+          },
+          finish: function (h) {
+            $("#loading").addClass("display-none");
+            //enable wheel
+            $("body").css("height", "auto");
+            //
+          },
+        };
+
+        $(".btn-success, a, li").click(loading.start);
+        loading.start();
+      });
+      //setTimeout(loading.finish, 5500);
+
+      //Facebook login
+
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "1358128461046548",
+          cookie: true,
+          xfbml: true,
+          version: "v7.0",
+        });
+
+        FB.AppEvents.logPageView();
+      };
+
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+
+      function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+          statusChangeCallback(response);
+        });
+      }
+    </script>
+  </body>
+</html>

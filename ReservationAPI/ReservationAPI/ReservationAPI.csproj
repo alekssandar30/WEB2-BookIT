@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200811220953_AirlineCompany_ctor.cs" />
+    <Compile Remove="Migrations\20200811220953_AirlineCompany_ctor.Designer.cs" />
+    <Compile Remove="Migrations\20200825001443_PlaneType.cs" />
+    <Compile Remove="Migrations\20200825001443_PlaneType.Designer.cs" />
+    <Compile Remove="Migrations\20200825001908_PlaneType.cs" />
+    <Compile Remove="Migrations\20200825001908_PlaneType.Designer.cs" />
+    <Compile Remove="Migrations\20200828003815_UndoAllChanges.cs" />
+    <Compile Remove="Migrations\20200828003815_UndoAllChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200828203456_TestMigration.cs" />
+    <Compile Remove="Migrations\20200828203456_TestMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200829075543_FlightCompanyRatingModels.cs" />
+    <Compile Remove="Migrations\20200829075543_FlightCompanyRatingModels.Designer.cs" />
+    <Compile Remove="Migrations\20200829110903_ChangeAirlineReservationModel1.cs" />
+    <Compile Remove="Migrations\20200829110903_ChangeAirlineReservationModel1.Designer.cs" />
+    <Compile Remove="Migrations\20200829112434_UndoChanges.cs" />
+    <Compile Remove="Migrations\20200829112434_UndoChanges.Designer.cs" />
+    <Compile Remove="Migrations\20200830173300_NullablePassenger.cs" />
+    <Compile Remove="Migrations\20200830173300_NullablePassenger.Designer.cs" />
+    <Compile Remove="Migrations\20200830235321_ReservaionNotificationAdded_ReservationAdapted.cs" />
+    <Compile Remove="Migrations\20200830235321_ReservaionNotificationAdded_ReservationAdapted.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.4.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="SendGrid" Version="9.20.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\Site\" />
+    <Folder Include="Resources\Users\" />
+  </ItemGroup>
+
+
+</Project>

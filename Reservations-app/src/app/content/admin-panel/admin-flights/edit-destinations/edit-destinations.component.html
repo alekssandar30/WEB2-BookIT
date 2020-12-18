@@ -1,0 +1,62 @@
+<div class="wrapper">
+  <div class="add-item overflow-hidden">
+    <div class="form-group">
+      <input
+        [(ngModel)]="airportName"
+        type="text"
+        class="form-control"
+        placeholder="Enter airport name"
+        value=""
+      />
+    </div>
+    <div class="form-group">
+      <input
+        [(ngModel)]="address"
+        type="text"
+        class="form-control"
+        placeholder="Enter address"
+        value=""
+      />
+    </div>
+    <div class="form-group">
+      <input
+        [(ngModel)]="city"
+        type="text"
+        class="form-control"
+        placeholder="Enter city"
+        value=""
+      />
+    </div>
+    <div class="form-group">
+      <input
+        [(ngModel)]="country"
+        type="text"
+        class="form-control"
+        placeholder="Enter country"
+        value=""
+      />
+    </div>
+
+    <button (click)="createDestination()" class="btn btn-success fright">
+      Add location
+    </button>
+  </div>
+  <div class="overflow-hidden">
+    <div *ngFor="let destination of destinationsToShow" class="item">
+      <span class="fleft">{{
+        destination.airportName +
+          ", " +
+          destination.city +
+          ", " +
+          destination.country
+      }}</span>
+
+      <img
+        class="fright"
+        (click)="deleteDestination(destination.id)"
+        src="../../../../../assets/site/icons/cancel.png"
+        alt=""
+      />
+    </div>
+  </div>
+</div>

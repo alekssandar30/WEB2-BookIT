@@ -1,0 +1,66 @@
+form > div {
+  display: flex;
+  justify-content: space-around;
+  height: 5vw;
+  padding-top: 0.2vw;
+}
+.form-group {
+  width: 28vw !important;
+  position: relative;
+}
+.form-group > div {
+  position: absolute;
+  top: 0.6vw;
+  left: 2vw;
+  width: 1.3vw;
+  height: 1.3vw;
+}
+
+/*  */
+.form-group .username-icon {
+  background-image: url("../../../../assets/site/icons/avatar-male.png");
+  background-size: cover;
+}
+.form-group .password-icon {
+  background-image: url("../../../../assets/site/icons/lock.png");
+  background-size: cover;
+}
+.form-group .mail-icon {
+  background-image: url("../../../../assets/site/icons/mail.png");
+  background-size: cover;
+}
+.form-group .location-icon {
+  background-image: url("../../../../assets/site/icons/location.png");
+  background-size: cover;
+}
+.form-group .phone-icon {
+  background-image: url("../../../../assets/site/icons/phone.png");
+  background-size: cover;
+}
+.form-group .passport-icon {
+  background-image: url("../../../../assets/site/icons/passport.png");
+  background-size: cover;
+}
+/*  */
+.form-group input {
+  height: 2.5vw;
+  border-radius: 0.5vw;
+
+  font-size: 1vw;
+  padding-left: 4vw;
+  border: 0.15vw solid #3f2b96;
+  background-color: white;
+  color: black;
+}
+
+div > .btn,
+.btn-success button {
+  margin: 0 auto;
+  padding: 0.2vw 1vw !important;
+  width: 10vw;
+  font-size: 1vw !important;
+}
+
+.btn-success:hover {
+  border: 1px solid #daf1ff;
+}

@@ -1,0 +1,205 @@
+<!--- Landing Page -->
+<div id="home">
+  <div class="landing">
+    <div class="home-wrap">
+      <div class="home-inner"></div>
+    </div>
+
+    <div class="caption text-center overflow-hidden">
+      <h1>{{ currentCompany == null ? "" : currentCompany.name }}</h1>
+      <h3>{{ currentCompany == null ? "" : currentCompany.description }}</h3>
+      <a class="btn btn-outline-light btn-lg">Drive with us</a>
+
+      <div
+        class="scroll-prompt"
+        scroll-prompt=""
+        ng-show="showPrompt"
+        style="opacity: 1"
+      >
+        <div class="scroll-prompt-arrow-container">
+          <div class="scroll-prompt-arrow">
+            <div></div>
+          </div>
+          <div class="scroll-prompt-arrow">
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--- End of Landing Page Section -->
+
+<!--Services Section-->
+<div id="services" class="offset">
+  <div class="jumbotron">
+    <div class="narrow text-center">
+      <div class="col-12">
+        <h3 class="heading">Services</h3>
+        <div class="heading-underline"></div>
+      </div>
+
+      <div class="row text-center">
+        <!--Usluga #1-->
+        <div class="col-md-4">
+          <div class="usluga">
+            <i
+              class="far fa-bookmark fa-4x"
+              data-fa-transform="shrink-3 up-5"
+            ></i>
+            <h3>Booking tickets</h3>
+          </div>
+        </div>
+
+        <!--Usluga #2-->
+        <div class="col-md-4">
+          <div class="usluga">
+            <i class="fas fa-plane fa-4x" data-fa-transform="shrink-3 up-5"></i>
+            <h3>The best planes</h3>
+          </div>
+        </div>
+
+        <!--Usluga #3-->
+        <div class="col-md-4">
+          <div class="usluga">
+            <i class="fas fa-cogs fa-4x" data-fa-transform="shrink-3 up-5"></i>
+            <h3>Easy booking</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--End of Services Section-->
+
+<!--About Section -> cars section -->
+<div id="about" class="offset">
+  <div class="fixed-background">
+    <div class="row purple text-center">
+      <div class="col-12">
+        <h3 class="heading">Fast reservations</h3>
+      </div>
+
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table table-hover table-condensed">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Flight date</th>
+                <th scope="col">Seat number</th>
+                <th scope="col">Price</th>
+                <th scope="col">Discount</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let seat of fastSeats; let i = index">
+                <td>
+                  {{ i + 1 }}
+                  <i
+                    class="far fa-bookmark fa-2x"
+                    data-fa-transform="shrink-3 up-5"
+                  ></i>
+                </td>
+                <td class="table-padding">
+                  {{ seat.startDestination.city }}
+                </td>
+                <td class="table-padding">
+                  {{ seat.endDestination.city }}
+                </td>
+                <td class="table-padding">
+                  {{ seat.dateAndTime }}
+                </td>
+                <td class="table-padding">
+                  {{ seat.seatMark }}
+                </td>
+                <td class="table-padding">{{ seat.price }}$</td>
+                <td class="table-padding">{{ seat.discount }}%</td>
+                <td>
+                  <button (click)="reserve(seat)" class="btn btn-success">
+                    Book Me
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="fixed-wrap">
+      <div class="fixed"></div>
+    </div>
+    </div>
+  </div>
+
+  <!--End of About Section-->
+
+    <!--Contact Section-->
+    <div id="contact" class="offset">
+      <div class="jumbotron">
+        <footer>
+          <div class="row justify-content-center">
+            <div class="col-md-12 text-center">
+              <h3 class="heading">Contact Us</h3>
+
+              <!-- <p>Address: {{ carCompany.address }}, {{ carCompany.city }}</p> -->
+              <hr />
+              <!--Google map-->
+              <!-- <div class="card map-card" style="height: 20vw;">
+                <div
+                  id="map-container-google-1"
+                  class="z-depth-1-half map-container"
+                  style="height: 20vw;"
+                >
+                  <iframe
+                    [src]="createURL() | safe: 'resourceUrl'"
+                    frameborder="0"
+                    style="border: 0; height: 100%;"
+                    class="col-md-12"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div> -->
+              <google-map
+                [zoom]="zoom"
+                [center]="center"
+                width="100%"
+                height="30vw"
+              >
+                <map-marker [position]="center"></map-marker>
+              </google-map>
+
+              <!--Rating -> ovo ce morati biti forma? -->
+              <br />
+              <h3 class="heading">Please Rate Us</h3>
+
+              <ul
+                class="list-inline rating-list"
+                *ngFor="let star of stars"
+                style="display: inline-block"
+              >
+                <li
+                  *ngIf="!ifRated"
+                  (click)="countStar(star)"
+                  [ngClass]="{ selected: star <= selectedValue }"
+                >
+                  <i class="fa fa-star fa-3x"></i>
+                </li>
+              </ul>
+
+              <!--end rating-->
+            </div>
+            <hr class="socket" />
+            &copy; Webici 2020
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

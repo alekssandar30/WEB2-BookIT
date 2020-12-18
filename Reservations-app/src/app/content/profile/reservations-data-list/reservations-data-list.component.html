@@ -1,0 +1,47 @@
+<ul class="list-group list-group-flush overflow-auto">
+  <li *ngFor="let r of myReservations" class="list-group-item overflow-hidden">
+    <div class="fleft">
+      <img src="../../../../assets/site/icons/reservations.png" width="23" />
+      {{
+        r.airlineReservation.flight.destinations[
+          r.airlineReservation.flight.destinations.length - 1
+        ].city +
+          "," +
+          r.airlineReservation.flight.destinations[
+            r.airlineReservation.flight.destinations.length - 1
+          ].country
+      }}
+    </div>
+    <div class="fleft">
+      car:
+      {{ r.carReservation.car.mark }}
+    </div>
+
+    <div
+      class="fright"
+      *ngIf="
+        !checkDatePass(
+          r.airlineReservation.flight.startDate,
+          r.airlineReservation.flight.startTime,
+          3
+        )
+      "
+    >
+      <button (click)="cancelReservation(r)" class="btn btn-success">
+        Cancel
+      </button>
+    </div>
+
+    <div class="fright">
+      {{ r.airlineReservation.flight.startDate }}
+    </div>
+    <div class="fright">
+      <img src="../../../assets/site/icons/seat.png" width="23" />
+      {{
+        r.airlineReservation.flight.seatConfiguration.seats[
+          r.airlineReservation.rowNumber
+        ].seats[r.airlineReservation.seatNumber].seatNo
+      }}
+    </div>
+  </li>
+</ul>

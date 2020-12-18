@@ -1,0 +1,145 @@
+<div id="panel-wrapper" class="overflow-hidden">
+  <h2>Reservation details</h2>
+  <div class="result overflow-hidden">
+    <div class="fleft">
+      <div>
+        <h6>Flight termin</h6>
+        <span>
+          <img src="../../../../assets/site/icons/calendar.png" alt="" />
+          {{ flight?.startDate }}
+        </span>
+
+        <span>
+          <img src="../../../../assets/site/icons/clock.png" alt="" />
+          {{ flight?.startTime }}
+        </span>
+      </div>
+      <div>
+        <h6>Return termin</h6>
+        <span>
+          <img src="../../../../assets/site/icons/calendar.png" alt="" />
+          {{ flight?.arrivingDate }}
+        </span>
+
+        <span>
+          <img src="../../../../assets/site/icons/clock.png" alt="" />
+          {{ flight?.arrivingTime }}
+        </span>
+      </div>
+    </div>
+
+    <div class="fleft separator">
+      <div>
+        <h6>Connecting flights number</h6>
+        <span>
+          <img
+            src="../../../../assets/site/icons/connecting-flights.png"
+            alt=""
+          />
+          {{ flight?.destinations.length }}
+        </span>
+      </div>
+      <div>
+        <h6>Flight duration</h6>
+        <span>
+          <img src="../../../../assets/site/icons/flight-duration.png" alt="" />
+          {{ flight?.estimationTime }}
+        </span>
+      </div>
+      <div>
+        <h6>Luggage (kg)</h6>
+        <span>
+          <img src="../../../../assets/site/icons/suitcase.png" alt="" />
+          {{ flight?.luggage }}
+        </span>
+      </div>
+    </div>
+
+    <!---->
+
+    <div class="fleft">
+      <div>
+        <h6>Airplane type</h6>
+        <span>
+          <img src="../../../../assets/site/icons/propeller.png" alt="" />
+          {{ flight?.seatConfiguration?.planeType.name }}
+        </span>
+      </div>
+      <div>
+        <h6>Additional services</h6>
+        <span>
+          <img
+            *ngFor="let service of listOfServices"
+            class="additional-services"
+            src="{{ serverAddress }}/Resources/Site/{{ service }}"
+            title="{{ service.split('.')[0] }}"
+            alt=""
+          />
+        </span>
+      </div>
+    </div>
+
+    <div class="fleft separator">
+      <div>
+        <h6>Aviocompany</h6>
+        <a routerLink="/companies/airlines/{{flight?.aviocCompany.id}">
+          <span>
+            <img src="../../../../assets/site/icons/plane.png" alt="" />
+            {{ flight?.avioCompany.name }}
+          </span>
+        </a>
+      </div>
+      <div>
+        <h6>Aviocompany rating</h6>
+        <span>
+          <img src="../../../../assets/site/icons/like.png" alt="" />
+          {{ flight?.avioCompany.likes }}
+        </span>
+      </div>
+      <div>
+        <h6>Relation</h6>
+        <span>
+          <img src="../../../../assets/site/icons/connected.png" alt="" />
+          {{ (flight?.destinations)[0]?.airportName }}
+          -
+          {{
+            (flight?.destinations)[flight?.destinations.length - 1]?.airportName
+          }}
+        </span>
+      </div>
+
+      <!-- {{ isFinished ? "true" : "false" }} -->
+    </div>
+
+    <!---->
+
+    <div class="fleft">
+      <div>
+        <h6>Flight prize</h6>
+        <span>
+          <img src="../../../../assets/site/icons/discount.png" alt="" />
+          {{ flight?.price }}$
+        </span>
+      </div>
+
+      <button class="btn btn-success fright" (click)="proceed()">
+        Proceed
+      </button>
+    </div>
+  </div>
+  <div id="space"></div>
+  <div *ngIf="loaded" id="proceed" class="overflow-hidden display-none">
+    <app-airline-reservation [flight]="flight"></app-airline-reservation>
+  </div>
+  <div class="space"></div>
+
+  <!--
+
+    <div id="finish" class="display-none">
+      <app-car-reservation
+      [reservation]="reservation"
+      [suggestedCars]="suggestedCars"
+      ></app-car-reservation>
+    </div>
+  -->
+</div>

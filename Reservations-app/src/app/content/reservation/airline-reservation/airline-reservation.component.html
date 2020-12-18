@@ -1,0 +1,193 @@
+<div id="book-flight" class="wrapper overflow-hidden">
+  <h2 class="fleft">Choose your seats!</h2>
+
+  <div id="seat-picker" class="fleft overflow-hidden">
+    <app-display-seats [currentSeatConfig]="flight?.seatConfiguration">
+    </app-display-seats>
+  </div>
+  <div id="friends-selector" class="fright">
+    <div id="message">
+      Select
+      {{ friendsToSelectNo() - 1 < 0 ? "0" : friendsToSelectNo() }}
+      friends
+    </div>
+    <div class="friends overflow-auto">
+      <!-- 
+
+
+       -->
+      <div class="form-group overflow-hidden">
+        <input
+          type="text"
+          id="firstName"
+          class="form-control fleft"
+          placeholder="First name"
+        />
+
+        <input
+          type="text"
+          autocomplete="off"
+          id="lastName"
+          class="form-control fleft"
+          placeholder="Last name"
+        />
+
+        <input
+          type="text"
+          autocomplete="off"
+          id="email"
+          class="form-control fleft"
+          placeholder="Email"
+        />
+
+        <input
+          type="text"
+          autocomplete="off"
+          id="passportNo"
+          class="form-control fleft"
+          placeholder="Passport no."
+        />
+
+        <!-- <select class="form-control fleft" id="seatNo">
+          <option value="*">Seat</option>
+          <option value="34">34</option>
+        </select> -->
+
+        <button class="btn-success fleft" (click)="addGuest()">Add</button>
+      </div>
+      <!-- 
+
+
+       -->
+      <div
+        *ngFor="let user of users; let i = index"
+        class="friend overflow-hidden"
+        (click)="onCheck($event, user)"
+      >
+        <div id="userId{{ i }}" class="fleft uncheck">
+          {{ user?.firstName + " " + user?.lastName }}
+        </div>
+      </div>
+    </div>
+
+    <div class="overflow-hidden">
+      <button
+        class="btn btn-success fright"
+        (click)="finishAirlineReservation()"
+      >
+        Finish airline reservation
+      </button>
+      <div id="rent-a-car" class="fright">
+        <label>Do you want rent a car?</label>
+
+        <input
+          type="checkbox"
+          [checked]="takeRentACar"
+          (change)="proceedToRentACar()"
+        />
+      </div>
+      <!-- fali metoda (click)="finish()" -->
+    </div>
+  </div>
+</div>
+<h2 *ngIf="takeRentACar && carOffers.length > 0" class="fleft">
+  Choose your car
+</h2>
+<h2 *ngIf="takeRentACar && carOffers.length <= 0">
+  Sorry, there are no free cars in this city!
+</h2>
+<div id="cars" class="finishDiv">
+  <!-- <app-car-reservation
+    style="padding-top: 30vw"
+    *ngIf="takeRentACar"
+  ></app-car-reservation> -->
+  <div class="results" *ngIf="takeRentACar">
+    <div class="result overflow-hidden" *ngFor="let offer of carOffers">
+      <div class="fleft">
+        <div>
+          <h6>Mark</h6>
+          <span>
+            <img src="../../../../assets/site/icons/car.png" alt="" />
+            {{ offer.car.mark }}
+          </span>
+        </div>
+        <div>
+          <h6>Description</h6>
+          <span>
+            <img src="../../../../assets/site/icons/description.png" alt="" />
+            {{ offer.description }}
+          </span>
+        </div>
+      </div>
+
+      <div class="fleft separator">
+        <div>
+          <h6>Company</h6>
+          <span>
+            {{ offer.carCompany.name }}
+          </span>
+        </div>
+        <div>
+          <h6>Prise (per day)</h6>
+          <span>
+            <img src="../../../../assets/site/icons/discount.png" alt="" />
+            {{ offer.car.price }}$
+          </span>
+        </div>
+      </div>
+      <div class="fleft separator">
+        <div>
+          <h6>Number of seats</h6>
+          <span>
+            <img src="../../../../assets/site/icons/seat.png" alt="" />
+            {{ offer.car.seats }}
+          </span>
+        </div>
+        <div>
+          <h6>Year</h6>
+          <span>
+            <img src="../../../../assets/site/icons/calendar.png" alt="" />
+            {{ offer.car.year }}
+          </span>
+        </div>
+      </div>
+      <!--datumi-->
+      <div class="fleft">
+        <form class="form" [formGroup]="CarReservationForm">
+          <div>
+            Start Date:
+            <input
+              id="startDate"
+              type="date"
+              formControlName="startDate"
+              class="form-control"
+              placeholder="Start date"
+              value=""
+            />
+          </div>
+          <hr />
+          <div>
+            End Date:
+            <input
+              id="endDate"
+              type="date"
+              class="form-control"
+              formControlName="endDate"
+              placeholder="End date"
+              value=""
+            />
+          </div>
+          <hr />
+          <button
+            type="submit"
+            class="btn btn-success"
+            (click)="MakeCarReservation(offer)"
+            [disabled]="!CarReservationForm.valid"
+          >
+            Pick Me
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

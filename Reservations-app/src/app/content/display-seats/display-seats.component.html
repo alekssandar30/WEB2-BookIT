@@ -1,0 +1,45 @@
+<div id="seat-selector" class="">
+  <div class="row" *ngFor="let row of seats; let raw_index = index">
+    <div
+      *ngFor="let seat of row.seats; let seat_index = index"
+      class="seat no-select"
+      [ngClass]="{
+        'path-margin':
+          seat_index === col1 - 1 ||
+          seat_index === col1 + col2 - 1 ||
+          seat_index === col1 + col2 + col3 - 1 ||
+          seat_index === col1 + col2 + col3 + col4 - 1,
+
+        'quick-seat': seat.forFastReservation && seat.passenger == null,
+        'taken-seat': seat.seatStatus == 'TAKEN',
+        'free-seat': seat.seatStatus == 'FREE',
+        'confirmed-seat': seat.seatStatus == 'CONFIRMED'
+      }"
+      (click)="onSeatClick(seat.seatNo)"
+      [attr.title]="seat.passengerEmail"
+    >
+      {{ seat.seatNo }}
+    </div>
+  </div>
+
+  <div id="legend">
+    <h4>Legend:</h4>
+    <hr />
+    <div class="overflow-hidden">
+      <div class="fleft seat free-seat">F</div>
+      <div class="fright text">Free</div>
+    </div>
+    <div class="overflow-hidden">
+      <div class="fleft seat quick-seat">Q</div>
+      <div class="fright text">Quick reservation</div>
+    </div>
+    <div class="overflow-hidden">
+      <div class="fleft seat taken-seat">T</div>
+      <div class="fright text">Taken</div>
+    </div>
+    <div class="overflow-hidden">
+      <div class="fleft seat confirmed-seat">C</div>
+      <div class="fright text">Confirmed</div>
+    </div>
+  </div>
+</div>

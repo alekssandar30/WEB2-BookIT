@@ -1,0 +1,11 @@
+<div>
+  <app-offers-list></app-offers-list>
+</div>
+<div>
+  <!--modal dialog-->
+  <!--Ovo cu prikazivati samo kada postoji selektovan offer-->
+  <app-offer-detail
+    *ngIf="selectedOffer"
+    [offer]="selectedOffer"
+  ></app-offer-detail>
+</div>

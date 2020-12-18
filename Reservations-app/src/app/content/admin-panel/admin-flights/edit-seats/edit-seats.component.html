@@ -1,0 +1,206 @@
+<div class="wrapper">
+  <div class="fleft">
+    <app-display-seats
+      [currentSeatConfig]="seatConfiguration"
+    ></app-display-seats>
+  </div>
+
+  <div id="data" class="fright">
+    <div class="form-group">
+      <input
+        (keyup)="configName($event, 0)"
+        type="text"
+        class="form-control"
+        placeholder="Configuration name"
+        value=""
+      />
+    </div>
+
+    <div
+      *ngIf="displayForm[0]"
+      class="form-group"
+      (change)="displayNext($event, 1)"
+    >
+      <select id="formId0" class="form-control">
+        <option value="*">Segments height</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+      </select>
+    </div>
+
+    <div
+      *ngIf="displayForm[1]"
+      class="form-group"
+      (change)="displayNext($event, 2)"
+    >
+      <select id="formId1" class="form-control">
+        <option value="*">Number of segments</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+
+    <div
+      *ngIf="displayForm[2]"
+      class="form-group"
+      (change)="displayNext($event, 3)"
+    >
+      <select id="formId2" class="form-control">
+        <option value="*">Segment one width</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <div
+      *ngIf="displayForm[3]"
+      class="form-group"
+      (change)="displayNext($event, 4)"
+    >
+      <select id="formId3" class="form-control">
+        <option value="*">Segment two width</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <div
+      *ngIf="displayForm[4]"
+      class="form-group"
+      (change)="displayNext($event, 5)"
+    >
+      <select id="formId4" class="form-control">
+        <option value="*">Segment three width</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <div
+      *ngIf="displayForm[5]"
+      class="form-group"
+      (change)="displayNext($event, 6)"
+    >
+      <select id="formId5" class="form-control">
+        <option value="*">Segment four width</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+
+    <button
+      class="btn btn-success fright display-none"
+      (click)="savePlaneType()"
+    >
+      Save info
+    </button>
+
+    <div class="alert alert-success overflow-hidden clear" role="alert">
+      <span class="fleft message">Config saved!</span>
+      <span class="fright"
+        ><img
+          (click)="disableWarning($event)"
+          src="../../../../../assets/site/icons/cancel.png"
+      /></span>
+    </div>
+  </div>
+
+  <div id="existing-configs" class="clear">
+    <h3>Existing seat configurations:</h3>
+    <div class="slide_show">
+      <img
+        src="../../../../../assets/site/icons/l_arrow.png"
+        class="klik"
+        (click)="prev()"
+        width="30"
+      />
+      <div class="nosac">
+        <div class="klizac">
+          <a
+            *ngFor="let planeType of allPlaneTypes"
+            class="fleft overflow-hidden"
+          >
+            <div class="slider-card">
+              <h3>{{ planeType.name }}</h3>
+              <ul>
+                <li>
+                  <b>height :</b>
+                  {{ planeType.segmentsHeight }}
+                </li>
+                <li>
+                  <b>segment one width :</b>
+                  {{ planeType.segmentOneWidth }}
+                </li>
+                <li>
+                  <b>segment two width :</b>
+                  {{ planeType.segmentTwoWidth }}
+                </li>
+                <li>
+                  <b>segment three width:</b>
+                  {{ planeType.segmentThreeWidth }}
+                </li>
+                <li>
+                  <b>segment four width :</b>
+                  {{ planeType.segmentFourWidth }}
+                </li>
+              </ul>
+            </div></a
+          >
+
+          <!-- <a class="fleft overflow-hidden"><div></div></a>
+          <a class="fleft overflow-hidden">
+            <div></div>
+          </a>
+          <a class="fleft overflow-hidden">
+            <div></div>
+          </a>
+          <a class="fleft overflow-hidden">
+            <div></div>
+          </a>
+          <a class="fleft overflow-hidden">
+            <div></div>
+          </a>
+          <a class="fleft overflow-hidden">
+            <div></div>
+          </a>
+          <a class="fleft overflow-hidden">
+            <div></div>
+          </a> -->
+        </div>
+      </div>
+      <img
+        src="../../../../../assets/site/icons/r_arrow.png"
+        class="klik"
+        (click)="next()"
+        width="30"
+      />
+    </div>
+  </div>
+</div>

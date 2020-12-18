@@ -1,0 +1,52 @@
+.wrapper {
+  overflow: hidden;
+  /* background-color: forestgreen; */
+}
+.item {
+  background-color: #513f9f;
+  color: #fff;
+  display: inline-block;
+  padding: 0.5vw;
+  margin: 0.2vw 0.3vw;
+}
+.item span {
+  padding: 0 0.5vw;
+  font-size: 1.2vw;
+}
+.item img {
+  width: 1.5vw;
+  height: 1.5vw;
+  margin-top: 0.2vw;
+}
+.form-group > h6 {
+  color: #43309a;
+}
+.form-group > .checkbox {
+  background-color: #43309a;
+  padding: 0.75vw;
+  margin: 0.75vw;
+  color: #fff;
+  border-radius: 0.5vw;
+}
+.form-group > .checkbox-services {
+  background-color: #fff;
+  color: #43309a;
+}
+.form-group > .checkbox-services img {
+  width: 2.8vw;
+  height: 2.8vw;
+}
+.form-group > div > span {
+  margin: 0.2vw;
+}
+
+#seatConfigPreview {
+  display: none;
+}
+
+.short-input {
+  width: 18vw;
+}
+.short-margin {
+  margin-right: 1vw;
+}

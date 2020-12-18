@@ -1,0 +1,58 @@
+.friends-searchbar {
+  /* background-color: red; */
+
+  margin-top: -0.45vw;
+  padding: 0.5vw 0;
+  display: flex;
+  justify-content: space-between;
+}
+.friends-searchbar .btn {
+  width: 12%;
+  height: 2.5vw;
+}
+.friends-searchbar .form-control {
+  border: 0.15vw solid rgb(67, 48, 154);
+  width: 87%;
+  height: 2.5vw;
+}
+
+#friends {
+  overflow: auto;
+  height: 24vw;
+}
+.friend {
+  height: 4vw;
+}
+.friend > div {
+  justify-content: center;
+  padding-top: 1vw;
+  text-align: center;
+  margin: 0 0.25vw;
+  width: 7vw;
+  height: 4vw;
+}
+.friend .image img {
+  margin-top: -0.5vw;
+  width: 3vw;
+}
+.friend .user {
+  text-align: left;
+
+  width: 24vw;
+}
+.friend .city {
+  width: 16vw;
+}
+
+.friend > div > span {
+  margin-top: 4vw;
+}
+.btn {
+  font-size: 1vw;
+  margin-top: -0.2vw;
+  height: 2.5vw;
+}
+
+.friend:nth-child(even) {
+  background-color: rgba(67, 48, 154, 0.3);
+}

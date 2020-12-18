@@ -1,0 +1,112 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="overflow-hidden">
+    <form [formGroup]="adminProfileForm" (ngSubmit)="onSubmit()">
+      <div>
+        <div class="form-group">
+          <div class="username-icon"></div>
+          <input
+            id="firstName"
+            type="text"
+            class="form-control"
+            formControlName="firstName"
+            placeholder="{{ firstName }}"
+            value=""
+          />
+        </div>
+        <div class="form-group">
+          <div class="username-icon"></div>
+          <input
+            id="lastName"
+            type="text"
+            class="form-control"
+            formControlName="lastName"
+            placeholder="{{ lastName }}"
+            value=""
+          />
+        </div>
+      </div>
+      <div>
+        <div class="form-group">
+          <div class="mail-icon"></div>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="{{ email }}"
+            value=""
+          />
+        </div>
+        <div class="form-group">
+          <div class="location-icon"></div>
+          <input
+            id="street"
+            type="text"
+            class="form-control"
+            formControlName="street"
+            placeholder="{{ street }}"
+            value=""
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="form-group">
+          <div class="location-icon"></div>
+          <input
+            id="city"
+            type="text"
+            class="form-control"
+            formControlName="city"
+            placeholder="{{ city }}"
+            value=""
+          />
+        </div>
+        <div class="form-group">
+          <div class="phone-icon"></div>
+          <input
+            id="phone"
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            placeholder="{{ phoneNumber }}"
+            value=""
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="form-group">
+          <div class="password-icon"></div>
+          <input
+            id="password1"
+            type="password"
+            formControlName="password1"
+            class="form-control"
+            id="pass1"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group">
+          <div class="password-icon"></div>
+          <input
+            id="password2"
+            type="password"
+            class="form-control pass2"
+            formControlName="password2"
+            placeholder="Confirm password"
+          />
+        </div>
+      </div>
+      <div>
+        <button
+          type="submit"
+          class="btn btn-success overflow-hidden"
+          [disabled]="!adminProfileForm.valid"
+        >
+          Edit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
